@@ -1,7 +1,14 @@
+<!-- app.component.html -->
 <ion-content>
-<ion-searchbar></ion-searchbar>
+<!-- Search bar with (ionChange) event bound to onSearch method -->
+<ion-searchbar (ionChange)="onSearch($event)"></ion-searchbar>
+<ion-button form= "Search">Search</ion-button>
+<!-- Table headers row -->
 <ion-grid>
   <ion-row>
+    <ion-col>
+      <strong>No.</strong>
+    </ion-col>
     <ion-col>
       <strong>Breed</strong>
     </ion-col>
@@ -19,7 +26,11 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let breed of catBreeds">
+  <!-- Table data rows, loop through filteredCatBreeds array instead of catBreeds -->
+  <ion-row *ngFor="let breed of filteredCatBreeds; let i = index" [ngStyle]="{ 'border': '1px solid #ccc' }" [ngClass]="{ 'grey-row': i % 2 === 0 }">
+    <ion-col>
+      {{ breed.num }}
+    </ion-col>
     <ion-col>
       {{ breed.breed }}
     </ion-col>
@@ -37,4 +48,9 @@
     </ion-col>
   </ion-row>
 </ion-grid>
+<div class="pagination">
+<button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+<span>Page {{ currentPage }} of {{ totalPages }}</span>
+<button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+</div>
 </ion-content>
