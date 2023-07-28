@@ -1,0 +1,40 @@
+<ion-content>
+<ion-searchbar></ion-searchbar>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <strong>Breed</strong>
+    </ion-col>
+    <ion-col>
+      <strong>Country</strong>
+    </ion-col>
+    <ion-col>
+      <strong>Origin</strong>
+    </ion-col>
+    <ion-col>
+      <strong>Coat</strong>
+    </ion-col>
+    <ion-col>
+      <strong>Pattern</strong>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngFor="let breed of catBreeds">
+    <ion-col>
+      {{ breed.breed }}
+    </ion-col>
+    <ion-col>
+      {{ breed.country }}
+    </ion-col>
+    <ion-col>
+      {{ breed.origin }}
+    </ion-col>
+    <ion-col>
+      {{ breed.coat }}
+    </ion-col>
+    <ion-col>
+      {{ breed.pattern }}
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
